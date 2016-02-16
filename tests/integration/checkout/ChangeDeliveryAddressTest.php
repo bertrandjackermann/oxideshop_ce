@@ -20,8 +20,9 @@
  * @version   OXID eShop CE
  */
 
-class Integration_Checkout_ChangeDeliveryAddressTest extends OxidTestCase
+class Integration_Checkout_changeDeliveryAddressTest extends OxidTestCase
 {
+    const TEST_ARTICLE_ID = '1127';
 
     /**
      * Fixture setUp.
@@ -39,8 +40,6 @@ class Integration_Checkout_ChangeDeliveryAddressTest extends OxidTestCase
         $this->cleanUpTable('oxuser');
         $this->cleanUpTable('oxuserbaskets');
         $this->cleanUpTable('oxuserbasketitems');
-
-        parent::tearDown();
     }
 
     /**
@@ -85,7 +84,7 @@ class Integration_Checkout_ChangeDeliveryAddressTest extends OxidTestCase
     {
         //no user logged in atm, create a basket
         $oBasket = $this->getProxyClass('oxBasket');
-        $oBasket->addToBasket($this->getTestArticleId(), 1); //8 EUR
+        $oBasket->addToBasket(self::TEST_ARTICLE_ID, 1); //8 EUR
         $this->getSession()->setBasket($oBasket);
 
         //create user, as soon at it is set in session, it is available for basket as well
@@ -118,7 +117,7 @@ class Integration_Checkout_ChangeDeliveryAddressTest extends OxidTestCase
     {
         //no user logged in atm, create a basket
         $oBasket = $this->getProxyClass('oxBasket');
-        $oBasket->addToBasket($this->getTestArticleId(), 1); //8 EUR
+        $oBasket->addToBasket(self::TEST_ARTICLE_ID, 1); //8 EUR
         $this->getSession()->setBasket($oBasket);
 
         //create user, as soon at it is set in session, it is available for basket as well
@@ -195,23 +194,12 @@ class Integration_Checkout_ChangeDeliveryAddressTest extends OxidTestCase
                             'oxuser__oxcity'      => 'Hamburg',
                             'oxuser__oxcountryid' => 'a7c40f631fc920687.20179984');
 
-        $this->setRequestParam('invadr', $aRawValues);
+        $this->setRequestParameter('invadr', $aRawValues);
         $this->setRequestParam('stoken', $this->getSession()->getSessionChallengeToken());
 
         $oUserComponent = oxNew('oxcmp_user');
         $this->assertSame('payment', $oUserComponent->changeUser());
+
     }
 
-    /**
-     * Test helper to provide test data depending on shop edition.
-     *
-     * @return string
-     */
-    private function getTestArticleId()
-    {
-        $return = '1127';
-        $return = '9f542c530b33a7128.25390419';
-
-        return $return;
-    }
 }
