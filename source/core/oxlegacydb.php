@@ -61,6 +61,8 @@ class oxLegacyDb extends oxSuperCfg
      *
      * @param bool $blType - connection type
      *
+     * @deprecated since v5.3 (2016-02-25); Do not use this method at all, we want this class to be the only database access possibility.
+     *
      * @return object
      */
     public function getDb($blType = true)
