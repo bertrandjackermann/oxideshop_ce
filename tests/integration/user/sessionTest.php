@@ -142,7 +142,7 @@ class Integration_User_SessionTest extends OxidTestCase
         $aSecondUser = $aFirstUser;
         $aSecondUser['oxuser__oxusername'] = new oxField('seconduser@oxideshop.dev', oxField::T_RAW);
         $aSecondUser['oxuser__oxpassword'] = new oxField('c1e113149bcc7737d1f0f91b0510f6cfb60697a5b654e9f49786d59e00e28' .
-                                                        '1168c209de99baf94626fa0604794cc4b469a7b768c260cf5c0d1d1ea0c9933effe',
+                                                         '1168c209de99baf94626fa0604794cc4b469a7b768c260cf5c0d1d1ea0c9933effe',
             oxField::T_RAW); //password is qwerqwer
         $aSecondUser['oxuser__oxpasssalt'] = new oxField('e25b237fce506256b3a151256c410ab2', oxField::T_RAW);
         $aSecondUser['oxuser__oxcustnr'] = new oxField('667', oxField::T_RAW);
@@ -206,8 +206,8 @@ class Integration_User_SessionTest extends OxidTestCase
      */
     private function _fillBasketForLoggedInUser($oUsername, $password, $sArticleId)
     {
-        $this->setRequestParam('lgn_usr', $oUsername);
-        $this->setRequestParam('lgn_pwd', $password);
+        $this->setRequestParameter('lgn_usr', $oUsername);
+        $this->setRequestParameter('lgn_pwd', $password);
 
         $parent = $this->getMock('oxuser', array('isEnabledPrivateSales'));
         $parent->expects($this->any())->method('isEnabledPrivateSales')->will($this->returnValue(false));
