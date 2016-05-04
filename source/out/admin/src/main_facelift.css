@@ -160,7 +160,7 @@ div.list {
 }
 
 td.edittext {
-    padding: 1px 0 1px 0;
+    /* padding: 1px 0 1px 0; */
 }
 div.actions {
     background-color: #ffffff;
@@ -195,7 +195,7 @@ div.actions {
     background: transparent url("bg/facelift/ico_help_facelift.png") no-repeat scroll 1px 0 !important;
 }
 .edittext select.editinput {
-    width: 100%;
+    /* width: 100%; */
 }
 
 .listTable th {
