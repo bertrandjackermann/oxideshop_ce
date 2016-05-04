@@ -185,7 +185,9 @@
                 <div>
                     <p>[{oxmultilang ident="PAYMENT_MAIN_LONGDESC"}]</p>
                     [{$editor}]
-                    <div class="messagebox">[{oxmultilang ident="EDITOR_PLAINTEXT_HINT"}]</div>
+                    [{if $oViewConf->getEdition() != "CE"}]
+                        <div class="messagebox">[{oxmultilang ident="EDITOR_PLAINTEXT_HINT"}]</div>
+                    [{/if}]
                 </div>
             [{/oxhasrights}]
         [{/block}]
